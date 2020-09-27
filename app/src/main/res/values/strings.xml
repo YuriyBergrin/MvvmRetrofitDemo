@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MvvmRetrofitDemo</string>
+    <string name="api_key">e80d3afa9f10c42421dfb05a9b811e5c</string>
+    <string name="image_path">https://image.tmdb.org/t/p/w500/</string>
+</resources>

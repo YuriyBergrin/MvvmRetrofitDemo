@@ -72,12 +72,21 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                });
 
-
+        mainActivityViewModel.getPagedListLiveData().observe(this,
+                new Observer<PagedList<Result>>() {
+                    @Override
+                    public void onChanged(PagedList<Result> resultList) {
+                        resultArrayList = resultList;
+                        fillRecyclerView();
+                    }
+                });
     }
 
     private void fillRecyclerView() {
         recyclerView = activityMainBinding.recyclerView;
-        adapter = new ResultAdapter(this, resultArrayList);
+        adapter = new ResultAdapter(this);
+
+        adapter.submitList(resultArrayList);
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             recyclerView.setLayoutManager(new GridLayoutManager(this, 2));

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<Result> resultArrayList;
+    private PagedList<Result> resultArrayList;
     private RecyclerView recyclerView;
     private ResultAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -62,14 +63,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getPopularMovies() {
-        mainActivityViewModel.getAllMovies().observe(this,
-                new Observer<List<Result>>() {
-                    @Override
-                    public void onChanged(List<Result> results) {
-                        resultArrayList = (ArrayList<Result>) results;
-                        fillRecyclerView();
-                    }
-                });
+//        mainActivityViewModel.getAllMovies().observe(this,
+//                new Observer<List<Result>>() {
+//                    @Override
+//                    public void onChanged(List<Result> results) {
+//                        resultArrayList = (ArrayList<Result>) results;
+//                        fillRecyclerView();
+//                    }
+//                });
+
+
     }
 
     private void fillRecyclerView() {

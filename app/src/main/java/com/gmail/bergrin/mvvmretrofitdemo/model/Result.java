@@ -8,10 +8,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.library.baseAdapters.BR;
+import androidx.recyclerview.widget.DiffUtil;
 
 import com.bumptech.glide.Glide;
 import com.gmail.bergrin.mvvmretrofitdemo.R;
@@ -120,6 +122,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.popularity = popularity;
         notifyPropertyChanged(BR.popularity);
     }
+
     @Bindable
     public Integer getVoteCount() {
         return voteCount;
@@ -129,6 +132,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.voteCount = voteCount;
         notifyPropertyChanged(BR.voteCount);
     }
+
     @Bindable
     public Boolean getVideo() {
         return video;
@@ -138,6 +142,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.video = video;
         notifyPropertyChanged(BR.video);
     }
+
     @Bindable
     public String getPosterPath() {
         return posterPath;
@@ -147,6 +152,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.posterPath = posterPath;
         notifyPropertyChanged(BR.posterPath);
     }
+
     @Bindable
     public Integer getId() {
         return id;
@@ -156,6 +162,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.id = id;
         notifyPropertyChanged(BR.id);
     }
+
     @Bindable
     public Boolean getAdult() {
         return adult;
@@ -165,6 +172,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.adult = adult;
         notifyPropertyChanged(BR.adult);
     }
+
     @Bindable
     public String getBackdropPath() {
         return backdropPath;
@@ -174,6 +182,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.backdropPath = backdropPath;
         notifyPropertyChanged(BR.backdropPath);
     }
+
     @Bindable
     public String getOriginalLanguage() {
         return originalLanguage;
@@ -183,6 +192,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.originalLanguage = originalLanguage;
         notifyPropertyChanged(BR.originalLanguage);
     }
+
     @Bindable
     public String getOriginalTitle() {
         return originalTitle;
@@ -192,6 +202,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.originalTitle = originalTitle;
         notifyPropertyChanged(BR.originalTitle);
     }
+
     @Bindable
     public List<Integer> getGenreIds() {
         return genreIds;
@@ -201,6 +212,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.genreIds = genreIds;
         notifyPropertyChanged(BR.genreIds);
     }
+
     @Bindable
     public String getTitle() {
         return title;
@@ -210,6 +222,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.title = title;
         notifyPropertyChanged(BR.title);
     }
+
     @Bindable
     public Double getVoteAverage() {
         return voteAverage;
@@ -219,6 +232,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.voteAverage = voteAverage;
         notifyPropertyChanged(BR.voteAverage);
     }
+
     @Bindable
     public String getOverview() {
         return overview;
@@ -228,6 +242,7 @@ public class Result extends BaseObservable implements Parcelable {
         this.overview = overview;
         notifyPropertyChanged(BR.overview);
     }
+
     @Bindable
     public String getReleaseDate() {
         return releaseDate;
@@ -258,5 +273,17 @@ public class Result extends BaseObservable implements Parcelable {
     public int describeContents() {
         return 0;
     }
+
+    public static DiffUtil.ItemCallback<Result> CALLBACK = new DiffUtil.ItemCallback<Result>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Result oldItem, @NonNull Result newItem) {
+            return oldItem.id == newItem.id;
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Result oldItem, @NonNull Result newItem) {
+            return true;
+        }
+    };
 
 }

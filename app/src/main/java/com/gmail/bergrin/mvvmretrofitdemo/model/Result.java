@@ -35,8 +35,12 @@ public class Result extends BaseObservable implements Parcelable {
 
     @BindingAdapter({"posterPath"})
     public static void loadImage(ImageView imageView, String imageUrl) {
+
+
+        String imagePath = imageView.getContext().getString(R.string.image_path) + imageUrl; //https://image.tmdb.org/t/p/w500/
+
         Glide.with(imageView.getContext())
-                .load(imageUrl)
+                .load(imagePath)
                 .placeholder(R.drawable.progress_circle)
                 .into(imageView);
     }

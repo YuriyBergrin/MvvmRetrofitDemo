@@ -50,9 +50,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
 
         Result result = results.get(position);
 
-        String imagePath = context.getString(R.string.image_path) + result.getPosterPath();
-        result.setPosterPath(imagePath);
-
         holder.resultListItemBinding.setResult(result);
 
     }
